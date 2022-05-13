@@ -1,4 +1,7 @@
-package com.example.springjpaproject;
+package com.example.springjpaproject.controller;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -8,7 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String home(){
-        return "Hello Docker World";
+    public Map testMapReturn(){
+        Map result = new HashMap<String, Object>();
+
+        result.put("GROUP_NAME","IZONE");
+
+        return result;
+
     }
 }

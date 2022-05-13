@@ -1,5 +1,18 @@
-# version: "3.7"
+version: "3.7"
 
-# services:
-#   database:
-#     image:
+services:
+  spring-boot:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      args:
+        JAR_FILE: build\libs\SpringJPA-Project-0.0.1-SNAPSHOT.jar
+    image: docker-spring
+    restart: always
+    ports:
+      - "8080:8080"
+    container_name: docker-compose-spring
+    networks:
+      - backend-network
+networks:
+  backend-network:

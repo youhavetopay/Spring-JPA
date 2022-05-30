@@ -1,6 +1,6 @@
 package com.example.springjpaproject;
 
-import com.example.springjpaproject.controller.TestController;
+import com.example.springjpaproject.user.controller.TestController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

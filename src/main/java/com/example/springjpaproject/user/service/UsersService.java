@@ -1,7 +1,7 @@
-package com.example.springjpaproject.service;
+package com.example.springjpaproject.user.service;
 
-import com.example.springjpaproject.entity.UsersEntitiy;
-import com.example.springjpaproject.repository.UsersRepository;
+import com.example.springjpaproject.user.entity.UsersEntitiy;
+import com.example.springjpaproject.user.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

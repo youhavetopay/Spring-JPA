@@ -1,6 +1,6 @@
-package com.example.springjpaproject.repository;
+package com.example.springjpaproject.user.repository;
 
-import com.example.springjpaproject.entity.UsersEntitiy;
+import com.example.springjpaproject.user.entity.UsersEntitiy;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsersRepository extends JpaRepository<UsersEntitiy, Integer> {

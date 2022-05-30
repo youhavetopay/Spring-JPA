@@ -1,4 +1,4 @@
-package com.example.springjpaproject.controller;
+package com.example.springjpaproject.user.controller;
 
 import java.util.HashMap;
 import java.util.Map;

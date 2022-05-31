@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public Map testMapReturn(){
-        Map result = new HashMap<String, Object>();
+  @RequestMapping(value = "/test", method = RequestMethod.GET)
+  public Map testMapReturn() {
+    Map result = new HashMap<String, Object>();
 
-        result.put("GROUP_NAME","IZONE");
+    result.put("GROUP_NAME", "IZONE");
 
-        return result;
+    return result;
 
-    }
+  }
 }

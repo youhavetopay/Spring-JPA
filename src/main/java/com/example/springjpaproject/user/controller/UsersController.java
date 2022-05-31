@@ -20,57 +20,57 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UsersController {
 
-    @Autowired
-    private UsersService usersService;
+  @Autowired
+  private UsersService usersService;
 
-    private ResponseMessage responseMessage;
-    private HttpHeaders headers = new HttpHeaders();
+  private ResponseMessage responseMessage;
+  private HttpHeaders headers = new HttpHeaders();
 
 
-    @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
-    public ResponseEntity findUser(@PathVariable("userId") String userId){
-        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-        responseMessage = new ResponseMessage();
+  @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
+  public ResponseEntity findUser(@PathVariable("userId") String userId) {
+    headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+    responseMessage = new ResponseMessage();
 
-        // 제대로된 응답값 만들기 전까지만 사용하기
-        try{
-            UsersEntitiy findUserInfo = usersService.findUserInfoByUserId(userId);
-            responseMessage.setStatus(StatusEnum.OK);
-            responseMessage.setMessage("아이디 조회 성공");
-            responseMessage.setData(findUserInfo);
+    // 제대로된 응답값 만들기 전까지만 사용하기
+    try {
+      UsersEntitiy findUserInfo = usersService.findUserInfoByUserId(userId);
+      responseMessage.setStatus(StatusEnum.OK);
+      responseMessage.setMessage("아이디 조회 성공");
+      responseMessage.setData(findUserInfo);
 
-        } catch (Exception e){
-            responseMessage.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
-            responseMessage.setMessage("내부 서버 오류");
-            responseMessage.setData(e.getMessage());
-            e.printStackTrace();
-            return new ResponseEntity(responseMessage, headers, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-        return new ResponseEntity(responseMessage, headers, HttpStatus.OK);
+    } catch (Exception e) {
+      responseMessage.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
+      responseMessage.setMessage("내부 서버 오류");
+      responseMessage.setData(e.getMessage());
+      e.printStackTrace();
+      return new ResponseEntity(responseMessage, headers, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public ResponseEntity saveUser(@RequestBody Map<String, Object> param){
+    return new ResponseEntity(responseMessage, headers, HttpStatus.OK);
+  }
 
-        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-        responseMessage = new ResponseMessage();
+  @RequestMapping(value = "/user", method = RequestMethod.POST)
+  public ResponseEntity saveUser(@RequestBody Map<String, Object> param) {
 
-        // 제대로된 응답값 만들기 전까지만 사용하기
-        try{
-            usersService.saveUser(param);
-            UsersEntitiy findUserInfo = usersService.findUserInfoByUserId(param.get("userId").toString());
-            responseMessage.setStatus(StatusEnum.OK);
-            responseMessage.setMessage("저장 성공");
-            responseMessage.setData(findUserInfo);
-        } catch (Exception e){
-            responseMessage.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
-            responseMessage.setMessage("내부 서버 오류");
-            responseMessage.setData(e.getMessage());
-            e.printStackTrace();
-            return new ResponseEntity(responseMessage, headers, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+    responseMessage = new ResponseMessage();
 
-        return new ResponseEntity(responseMessage, headers, HttpStatus.OK);
+    // 제대로된 응답값 만들기 전까지만 사용하기
+    try {
+      usersService.saveUser(param);
+      UsersEntitiy findUserInfo = usersService.findUserInfoByUserId(param.get("userId").toString());
+      responseMessage.setStatus(StatusEnum.OK);
+      responseMessage.setMessage("저장 성공");
+      responseMessage.setData(findUserInfo);
+    } catch (Exception e) {
+      responseMessage.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
+      responseMessage.setMessage("내부 서버 오류");
+      responseMessage.setData(e.getMessage());
+      e.printStackTrace();
+      return new ResponseEntity(responseMessage, headers, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    return new ResponseEntity(responseMessage, headers, HttpStatus.OK);
+  }
 }

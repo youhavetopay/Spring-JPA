@@ -11,22 +11,22 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UsersService {
 
-    private final UsersRepository usersRepository;
+  private final UsersRepository usersRepository;
 
-    public UsersEntitiy findUserInfoByUserId(final String userId){
+  public UsersEntitiy findUserInfoByUserId(final String userId) {
 
-        final UsersEntitiy userInfo = usersRepository.findUsersEntitiyByUserId(userId);
+    final UsersEntitiy userInfo = usersRepository.findUsersEntitiyByUserId(userId);
 
-        return userInfo;
-    }
+    return userInfo;
+  }
 
-    public void saveUser(Map<String, Object> param){
-        UsersEntitiy usersEntitiy = UsersEntitiy.builder()
-                .userId(param.get("userId").toString())
-                .userName(param.get("userName").toString())
-                .build();
+  public void saveUser(Map<String, Object> param) {
+    UsersEntitiy usersEntitiy = UsersEntitiy.builder()
+        .userId(param.get("userId").toString())
+        .userName(param.get("userName").toString())
+        .build();
 
-        usersRepository.save(usersEntitiy);
-    }
+    usersRepository.save(usersEntitiy);
+  }
 
 }
